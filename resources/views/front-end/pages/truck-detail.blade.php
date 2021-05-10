@@ -40,8 +40,6 @@
     <meta property="og:image" content="{{ asset($img_path->thumbnail->url) }}">
 @endif
 
-
-{{-- <meta property="og:image" content="@php echo (!empty($img_path->medium) ? asset($img_path->medium->url) : !empty($img_path->thumbnail) ? asset($img_path->thumbnail->url) : "") @endphp" /> --}}
 <meta property="og:url" content="{{ Request::url() }}" />
 <!-- Optional Open Graph data -->
 <meta property="og:description" content="{{ $vehicle->description }} {{ $meta_keyword }} {{ $vehicle->dealUrl($vehicle->type,$vehicle->modelId->name,$vehicle->brandId->name) }} " />
