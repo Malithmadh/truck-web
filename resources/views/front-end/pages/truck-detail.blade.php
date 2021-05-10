@@ -33,7 +33,15 @@
 <!-- Required Open Graph data -->
 <meta property="og:title" content=" @php echo(ucfirst($vehicle->brandId->name . $vehicle->modelId->name . $vehicle->number)) @endphp" />
 <meta property="og:type" content="{{ $vehicle->type }}" />
-<meta property="og:image" content="@php echo (!empty($img_path->medium) ? asset($img_path->medium->url) : !empty($img_path->thumbnail) ? asset($img_path->thumbnail->url) : "") @endphp" />
+
+@if(!empty($img_path->medium))
+    <meta property="og:image" content="{{ asset($img_path->medium->url) }}">
+@elseif(!empty($img_path->thumbnail))
+    <meta property="og:image" content="{{ asset($img_path->thumbnail->url) }}">
+@endif
+
+
+{{-- <meta property="og:image" content="@php echo (!empty($img_path->medium) ? asset($img_path->medium->url) : !empty($img_path->thumbnail) ? asset($img_path->thumbnail->url) : "") @endphp" /> --}}
 <meta property="og:url" content="{{ Request::url() }}" />
 <!-- Optional Open Graph data -->
 <meta property="og:description" content="{{ $vehicle->description }} {{ $meta_keyword }} {{ $vehicle->dealUrl($vehicle->type,$vehicle->modelId->name,$vehicle->brandId->name) }} " />
